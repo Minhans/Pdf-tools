@@ -3,1085 +3,904 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RamDoc Tools - Divine Document & Image Editor | Free PDF & JPG Tools</title>
-    <meta name="description" content="Free divine document tools to convert, edit, compress PDFs, JPGs with Lord Ram's blessings. Sacred watermarking and optimization tools for all your needs.">
-    <meta name="keywords" content="PDF tools, image converter, document editor, sacred editor, JPG to PDF, free document tools, compress PDF, image optimizer">
-    <meta name="author" content="RamDoc Tools">
-    <meta name="robots" content="index, follow">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Hind+Siliguri:wght@600&display=swap" rel="stylesheet">
+    <meta name="description" content="Generate stunning AI avatars, optimize images & videos with our powerful AI tools. Create professional content in seconds.">
+    <meta name="keywords" content="AI avatar, image generator, video generator, AI tools, image optimization, video optimization">
+    <meta name="author" content="AI Generator Pro">
+    <meta property="og:title" content="AI Image & Video Generator | Create Stunning Content">
+    <meta property="og:description" content="Generate AI avatars and optimize your media files with our advanced AI tools.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg">
+    <title>AI Image & Video Generator | Create Stunning Content</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
     <style>
         :root {
-            --saffron: #FF9933;
-            --green: #138808;
-            --blue: #000080;
-            --gold: #FFD700;
-            --red: #E21717;
-            --light-bg: #FFF9E6;
-            --dark-text: #333333;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            --radius: 12px;
-            --transition: all 0.3s ease;
+            --primary-color: #6e48aa;
+            --secondary-color: #9d50bb;
+            --accent-color: #4776e6;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --max-width: 1200px;
+            --border-radius: 8px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light-bg);
-            color: var(--dark-text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            background-image: url('https://i.imgur.com/JQJbZLQ.png');
-            background-size: 300px;
-            background-repeat: repeat;
-            background-attachment: fixed;
-            background-blend-mode: overlay;
-            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            background-color: #f5f7fa;
         }
-        
-        /* Header */
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
         header {
-            background: linear-gradient(135deg, var(--saffron) 0%, var(--gold) 100%);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 1rem;
-            text-align: center;
+            padding: 1rem 0;
+            box-shadow: var(--box-shadow);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: var(--shadow);
-            border-bottom: 5px solid var(--blue);
         }
-        
-        .nav-container {
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1rem;
         }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .ram-icon {
-            font-size: 2rem;
-            color: var(--blue);
-            animation: float 3s ease-in-out infinite;
-        }
-        
+
         .logo {
-            font-family: 'Hind Siliguri', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
-            background: linear-gradient(to right, var(--blue), var(--red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .tagline {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            color: var(--blue);
-            font-weight: 500;
-            display: none;
-        }
-        
-        .nav-links {
             display: flex;
-            gap: 1.5rem;
+            align-items: center;
         }
-        
-        .nav-links a {
-            color: var(--blue);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            padding: 0.5rem;
-            border-radius: var(--radius);
+
+        .logo i {
+            margin-right: 10px;
         }
-        
-        .nav-links a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+
+        nav ul {
+            display: flex;
+            list-style: none;
         }
-        
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            color: var(--blue);
+            color: white;
             font-size: 1.5rem;
             cursor: pointer;
         }
-        
+
         /* Hero Section */
         .hero {
-            position: relative;
-            height: 70vh;
-            min-height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 4rem 0;
             text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1677442135136-760c813a743d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
             color: white;
-            overflow: hidden;
-            margin-bottom: 2rem;
         }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1;
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
-        
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 2rem;
-        }
-        
-        .hero-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-            color: white;
-            line-height: 1.2;
-        }
-        
-        .hero-subtitle {
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero-btn {
-            display: inline-flex;
-            background: linear-gradient(to right, var(--saffron), var(--gold));
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
+
+        .hero p {
             font-size: 1.2rem;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            align-items: center;
-            gap: 10px;
+            max-width: 800px;
+            margin: 0 auto 2rem;
         }
-        
-        .hero-btn:hover {
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-btn:hover {
+            background-color: #3a5fc8;
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-        
+
         /* Ad Banner */
         .ad-banner {
-            background-color: #f8f8f8;
-            padding: 1rem;
+            background-color: #f1f1f1;
+            padding: 15px;
             text-align: center;
-            margin: 1rem auto;
-            border-radius: var(--radius);
-            max-width: 1200px;
-            border: 1px solid #e0e0e0;
+            margin: 1rem 0;
+            border-radius: var(--border-radius);
         }
-        
-        .ad-banner .ad-placeholder {
-            background-color: #e9e9e9;
-            padding: 1rem;
-            color: #666;
-            font-size: 0.9rem;
-            border-radius: 4px;
-        }
-        
-        /* Tools Grid */
+
+        /* Generator Tools Section */
         .tools-section {
-            padding: 4rem 1rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            padding: 3rem 0;
         }
-        
+
         .section-title {
             text-align: center;
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            margin-bottom: 3rem;
-            color: var(--blue);
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--dark-color);
         }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--saffron), var(--blue));
-            border-radius: 2px;
-        }
-        
+
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-        
+
         .tool-card {
-            background: white;
-            border-radius: var(--radius);
+            background-color: white;
+            border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-top: 5px solid var(--saffron);
-            position: relative;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
         }
-        
+
         .tool-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
-        
-        .tool-card-img {
-            height: 200px;
+
+        .tool-card img {
             width: 100%;
+            height: 200px;
             object-fit: cover;
         }
-        
-        .tool-card-content {
+
+        .tool-content {
             padding: 1.5rem;
         }
-        
-        .tool-card-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--blue);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+
+        .tool-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
         }
-        
-        .tool-card-desc {
+
+        .tool-content p {
+            margin-bottom: 1rem;
             color: #666;
+        }
+
+        /* Generator Forms */
+        .generator-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-top: 2rem;
+        }
+
+        .form-group {
             margin-bottom: 1.5rem;
         }
-        
-        .tool-card-btn {
-            display: inline-flex;
-            background: linear-gradient(to right, var(--blue), #3a5bef);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--radius);
-            font-weight: 500;
-            text-decoration: none;
-            transition: var(--transition);
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-        }
-        
-        .tool-card-btn:hover {
-            background: linear-gradient(to right, #3a5bef, var(--blue));
-        }
-        
-        /* Image Compressor Tool */
-        .compressor-tool {
-            background: white;
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            max-width: 1000px;
-            margin: 3rem auto;
-        }
-        
-        .compressor-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .compressor-title {
-            font-size: 2rem;
-            color: var(--blue);
-            margin-bottom: 1rem;
-        }
-        
-        .compressor-subtitle {
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .compressor-container {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        
-        .upload-area {
-            border: 2px dashed #ccc;
-            border-radius: var(--radius);
-            padding: 3rem 1rem;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-            background-color: #f9f9f9;
-        }
-        
-        .upload-area:hover {
-            border-color: var(--blue);
-            background-color: #f0f0f0;
-        }
-        
-        .upload-icon {
-            font-size: 3rem;
-            color: var(--blue);
-            margin-bottom: 1rem;
-        }
-        
-        .upload-text {
-            font-weight: 500;
+
+        .form-group label {
+            display: block;
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
-        
-        .upload-subtext {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        #file-input {
-            display: none;
-        }
-        
-        .preview-container {
-            display: none;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-        
-        .preview-box {
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        .preview-title {
-            background-color: var(--blue);
-            color: white;
+
+        .form-control {
+            width: 100%;
             padding: 0.8rem;
-            text-align: center;
-            font-weight: 600;
-        }
-        
-        .preview-image {
-            width: 100%;
-            height: 300px;
-            object-fit: contain;
-            background-color: #f5f5f5;
-            padding: 1rem;
-        }
-        
-        .compression-controls {
-            display: none;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .control-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        
-        .control-label {
-            font-weight: 500;
-            color: var(--blue);
-        }
-        
-        .quality-slider {
-            width: 100%;
-            height: 8px;
-            -webkit-appearance: none;
-            appearance: none;
-            background: #ddd;
-            border-radius: 4px;
-            outline: none;
-        }
-        
-        .quality-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--blue);
-            cursor: pointer;
-        }
-        
-        .quality-value {
-            font-weight: 600;
-            color: var(--blue);
-            text-align: center;
-        }
-        
-        .format-options {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .format-option {
-            padding: 0.5rem 1rem;
             border: 1px solid #ddd;
-            border-radius: var(--radius);
-            cursor: pointer;
-            transition: var(--transition);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
         }
-        
-        .format-option:hover {
-            border-color: var(--blue);
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
         }
-        
-        .format-option.active {
-            background-color: var(--blue);
-            color: white;
-            border-color: var(--blue);
-        }
-        
-        .action-buttons {
+
+        .form-row {
             display: flex;
             gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
         }
-        
-        .action-btn {
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--radius);
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .compress-btn {
-            background: linear-gradient(to right, var(--blue), #3a5bef);
-            color: white;
-        }
-        
-        .compress-btn:hover {
-            background: linear-gradient(to right, #3a5bef, var(--blue));
-        }
-        
-        .reset-btn {
-            background-color: #f0f0f0;
-            color: #666;
-        }
-        
-        .reset-btn:hover {
-            background-color: #e0e0e0;
-        }
-        
-        .download-btn {
-            background: linear-gradient(to right, var(--green), #2ecc71);
-            color: white;
-            display: none;
-        }
-        
-        .download-btn:hover {
-            background: linear-gradient(to right, #2ecc71, var(--green));
-        }
-        
-        .file-info {
-            display: none;
-            justify-content: space-between;
-            background-color: #f9f9f9;
-            padding: 1rem;
-            border-radius: var(--radius);
-            margin-top: 1rem;
-        }
-        
-        .file-info-item {
-            text-align: center;
+
+        .form-row .form-group {
             flex: 1;
         }
-        
-        .file-info-label {
-            font-size: 0.8rem;
-            color: #666;
-            margin-bottom: 0.3rem;
-        }
-        
-        .file-info-value {
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
             font-weight: 600;
-            color: var(--blue);
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
         }
-        
-        /* Divine Features */
-        .divine-features {
-            background: linear-gradient(135deg, rgba(255, 153, 51, 0.1) 0%, rgba(19, 136, 8, 0.1) 100%);
-            padding: 4rem 1rem;
-            text-align: center;
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
         }
-        
+
+        .btn-primary:hover {
+            background-color: #5d3d92;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        /* Results Section */
+        .results-section {
+            padding: 2rem 0;
+            display: none;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .result-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .result-item img, .result-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .result-actions {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 3rem 0;
+            background-color: white;
+        }
+
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
         }
-        
+
         .feature-card {
-            background: white;
+            text-align: center;
             padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
         }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
+
         .feature-icon {
             font-size: 3rem;
-            color: var(--blue);
-            margin-bottom: 1.5rem;
-        }
-        
-        .feature-title {
-            font-size: 1.5rem;
+            color: var(--primary-color);
             margin-bottom: 1rem;
-            color: var(--blue);
         }
-        
-        .feature-desc {
-            color: #666;
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
         }
-        
+
         /* Testimonials */
-        .testimonials {
-            padding: 4rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .testimonials-section {
+            padding: 3rem 0;
+            background-color: #f8f9fa;
         }
-        
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
         .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            margin: 1rem;
-            position: relative;
-            border-left: 5px solid var(--saffron);
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
         }
-        
-        .testimonial-text {
+
+        .testimonial-card .quote {
             font-style: italic;
-            margin-bottom: 1.5rem;
-            position: relative;
+            margin-bottom: 1rem;
         }
-        
-        .testimonial-text::before {
-            content: '"';
-            font-size: 4rem;
-            position: absolute;
-            top: -1.5rem;
-            left: -1rem;
-            color: rgba(255, 153, 51, 0.2);
-            font-family: serif;
-        }
-        
+
         .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 1rem;
         }
-        
-        .author-avatar {
+
+        .testimonial-author img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--saffron);
+            margin-right: 1rem;
         }
-        
-        .author-info h4 {
-            color: var(--blue);
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 3rem 0;
         }
-        
-        .author-info p {
-            color: #666;
-            font-size: 0.9rem;
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
-        
-        /* Call to Action */
-        .cta-section {
-            background: linear-gradient(135deg, var(--blue) 0%, #1a1a2e 100%);
-            color: white;
-            padding: 5rem 1rem;
-            text-align: center;
-            position: relative;
+
+        .pricing-card {
+            background-color: white;
+            border-radius: var(--border-radius);
             overflow: hidden;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
         }
-        
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            background: url('https://i.imgur.com/JQJbZLQ.png') repeat-x;
-            background-size: contain;
-            opacity: 0.3;
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
         }
-        
-        .cta-title {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 2;
+
+        .pricing-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
         }
-        
-        .cta-subtitle {
-            font-size: clamp(1rem, 2vw, 1.2rem);
+
+        .pricing-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: normal;
+        }
+
+        .pricing-body {
+            padding: 1.5rem;
+        }
+
+        .pricing-body ul {
+            list-style: none;
             margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            z-index: 2;
-            opacity: 0.9;
         }
-        
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
+
+        .pricing-body ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
         }
-        
-        .cta-btn {
-            display: inline-flex;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .cta-btn-primary {
-            background: linear-gradient(to right, var(--saffron), var(--gold));
-            color: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .cta-btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .cta-btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .cta-btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .cta-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.2;
-            z-index: 1;
-        }
-        
+
         /* Footer */
         footer {
-            background: #111;
+            background-color: var(--dark-color);
             color: white;
-            padding: 3rem 1rem;
-            text-align: center;
+            padding: 3rem 0 1rem;
         }
-        
-        .footer-logo {
-            font-family: 'Hind Siliguri', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--gold);
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+
+        .footer-col h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul {
             list-style: none;
-            margin: 1.5rem 0;
-            gap: 1.5rem;
         }
-        
-        .footer-links li {
-            position: relative;
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
         }
-        
-        .footer-links li:not(:last-child)::after {
-            content: '•';
-            position: absolute;
-            right: -0.9rem;
-            color: rgba(255, 255, 255, 0.5);
+
+        .footer-col ul li a {
+            color: #ddd;
+            transition: color 0.3s ease;
         }
-        
-        .footer-links a {
+
+        .footer-col ul li a:hover {
             color: white;
-            text-decoration: none;
-            transition: var(--transition);
-            font-weight: 500;
         }
-        
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-        
+
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 1.5rem 0;
+            gap: 1rem;
         }
-        
+
         .social-links a {
             color: white;
-            font-size: 1.5rem;
-            transition: var(--transition);
+            font-size: 1.2rem;
         }
-        
-        .social-links a:hover {
-            color: var(--gold);
-            transform: translateY(-3px);
-        }
-        
+
         .copyright {
-            margin-top: 1.5rem;
-            opacity: 0.8;
-            font-size: 0.9rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            margin-top: 2rem;
         }
-        
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav {
+                margin-top: 1rem;
+                width: 100%;
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
         /* Loading Spinner */
         .spinner {
             display: none;
             width: 40px;
             height: 40px;
-            margin: 0 auto;
+            margin: 2rem auto;
             border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left-color: var(--blue);
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
         }
-        
+
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        
-        /* Animations */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+            display: none;
         }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 992px) {
-            .preview-container {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: linear-gradient(135deg, var(--saffron) 0%, var(--gold) 100%);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: var(--shadow);
-                z-index: 99;
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero {
-                height: 60vh;
-            }
-            
-            .file-info {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero {
-                height: 70vh;
-                min-height: 400px;
-            }
-            
-            .action-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .action-btn {
-                width: 100%;
-                justify-content: center;
-            }
+
+        .progress-bar {
+            height: 10px;
+            border-radius: var(--border-radius);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            width: 0%;
+            transition: width 0.3s ease;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="nav-container">
-            <div class="logo-container">
-                <div class="ram-icon">🕉️</div>
-                <div>
-                    <h1 class="logo">RamDoc Tools</h1>
-                    <p class="tagline">Bless your documents with divine energy</p>
-                </div>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <span>AI Generator Pro</span>
             </div>
-            
-            <nav class="nav-links">
-                <a href="#tools">Tools</a>
-                <a href="#compressor">Image Compressor</a>
-                <a href="#features">Features</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#" class="cta-btn-primary">Premium</a>
-            </nav>
-            
-            <button class="mobile-menu-btn">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
-    
+
     <!-- Hero Section -->
-    <section class="hero">
-        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Lord Rama" class="hero-bg">
-        <div class="hero-content">
-            <h1 class="hero-title">Divine Document & Image Tools</h1>
-            <p class="hero-subtitle">Convert, edit and optimize your documents with the blessings of Lord Rama</p>
-            <a href="#compressor" class="hero-btn">
-                <i class="fas fa-compress-alt"></i> Compress Images Now
-            </a>
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Create Stunning AI Images & Videos</h1>
+            <p>Generate unique AI avatars, optimize your media files, and create professional content in seconds with our powerful AI tools.</p>
+            <a href="#tools" class="cta-btn">Try It Now</a>
         </div>
     </section>
-    
+
     <!-- Ad Banner -->
-    <div class="ad-banner">
-        <!-- Replace with your Google AdSense code -->
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
-        <!-- Homepage Banner Ad -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-YOUR_ADSENSE_ID"
-             data-ad-slot="YOUR_AD_SLOT_ID"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+    <div class="container">
+        <div class="ad-banner">
+            <!-- Google AdSense Ad -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+            <!-- Replace with your Ad Unit ID -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                 data-ad-slot="YOUR_AD_UNIT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
     </div>
-    
+
     <!-- Tools Section -->
     <section class="tools-section" id="tools">
-        <h2 class="section-title">Our Sacred Tools</h2>
-        
-        <div class="tools-grid">
-            <!-- PDF Tools -->
-            <div class="tool-card">
-                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="PDF Tools" class="tool-card-img">
-                <div class="tool-card-content">
-                    <h3 class="tool-card-title"><i class="fas fa-file-pdf"></i> PDF Tools</h3>
-                    <p class="tool-card-desc">Merge, split, compress and convert PDFs with divine precision. Blessed tools for all your document needs.</p>
-                    <a href="#" class="tool-card-btn">
-                        <i class="fas fa-arrow-right"></i> Use Tool
-                    </a>
+        <div class="container">
+            <h2 class="section-title">AI Generation Tools</h2>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="AI Avatar Generator">
+                    <div class="tool-content">
+                        <h3>AI Avatar Generator</h3>
+                        <p>Create unique AI-generated avatars from your photos or text descriptions.</p>
+                        <button class="btn btn-primary btn-block" onclick="showGenerator('avatar')">Generate Avatar</button>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <img src="https://images.unsplash.com/photo-1574717024453-3545e7cc3e1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="AI Video Generator">
+                    <div class="tool-content">
+                        <h3>AI Video Generator</h3>
+                        <p>Transform your ideas into stunning videos with our AI video creation tool.</p>
+                        <button class="btn btn-primary btn-block" onclick="showGenerator('video')">Generate Video</button>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <img src="https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80" alt="Image Optimizer">
+                    <div class="tool-content">
+                        <h3>Image Optimizer</h3>
+                        <p>Enhance, resize, and optimize your images for web and social media.</p>
+                        <button class="btn btn-primary btn-block" onclick="showGenerator('image-optimizer')">Optimize Images</button>
+                    </div>
                 </div>
             </div>
             
-            <!-- Image Converter -->
-            <div class="tool-card">
-                <img src="https://images.unsplash.com/photo-1579965342575-16428a7c8881?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Image Converter" class="tool-card-img">
-                <div class="tool-card-content">
-                    <h3 class="tool-card-title"><i class="fas fa-exchange-alt"></i> Image Converter</h3>
-                    <p class="tool-card-desc">Convert between JPG, PNG, WEBP and more while maintaining spiritual quality and purity.</p>
-                    <a href="#" class="tool-card-btn">
-                        <i class="fas fa-arrow-right"></i> Use Tool
-                    </a>
+            <!-- AI Avatar Generator Form -->
+            <div id="avatar-generator" class="generator-form" style="display: none;">
+                <h3>AI Avatar Generator</h3>
+                <form id="avatarForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="avatar-style">Avatar Style</label>
+                            <select id="avatar-style" class="form-control" required>
+                                <option value="">Select Style</option>
+                                <option value="cartoon">Cartoon</option>
+                                <option value="realistic">Realistic</option>
+                                <option value="anime">Anime</option>
+                                <option value="fantasy">Fantasy</option>
+                                <option value="cyberpunk">Cyberpunk</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="avatar-gender">Gender</label>
+                            <select id="avatar-gender" class="form-control" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="non-binary">Non-binary</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="avatar-description">Description</label>
+                        <textarea id="avatar-description" class="form-control" rows="3" placeholder="Describe your avatar (e.g., 'A futuristic warrior with blue hair and cybernetic implants')" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="avatar-upload">Upload Reference Image (Optional)</label>
+                        <input type="file" id="avatar-upload" class="form-control" accept="image/*">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Generate Avatar</button>
+                </form>
+                
+                <div class="progress-container" id="avatar-progress">
+                    <div class="progress-bar" id="avatar-progress-bar"></div>
+                </div>
+                
+                <div class="spinner" id="avatar-spinner"></div>
+            </div>
+            
+            <!-- AI Video Generator Form -->
+            <div id="video-generator" class="generator-form" style="display: none;">
+                <h3>AI Video Generator</h3>
+                <form id="videoForm">
+                    <div class="form-group">
+                        <label for="video-prompt">Video Description</label>
+                        <textarea id="video-prompt" class="form-control" rows="3" placeholder="Describe the video you want to create (e.g., 'A sunset over mountains with flying dragons')" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="video-style">Video Style</label>
+                            <select id="video-style" class="form-control" required>
+                                <option value="">Select Style</option>
+                                <option value="realistic">Realistic</option>
+                                <option value="cartoon">Cartoon</option>
+                                <option value="anime">Anime</option>
+                                <option value="watercolor">Watercolor</option>
+                                <option value="pixel-art">Pixel Art</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="video-duration">Duration (seconds)</label>
+                            <input type="number" id="video-duration" class="form-control" min="1" max="60" value="10" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="video-upload">Upload Reference Images/Videos (Optional)</label>
+                        <input type="file" id="video-upload" class="form-control" accept="image/*,video/*" multiple>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Generate Video</button>
+                </form>
+                
+                <div class="progress-container" id="video-progress">
+                    <div class="progress-bar" id="video-progress-bar"></div>
+                </div>
+                
+                <div class="spinner" id="video-spinner"></div>
+            </div>
+            
+            <!-- Image Optimizer Form -->
+            <div id="image-optimizer-generator" class="generator-form" style="display: none;">
+                <h3>Image Optimizer</h3>
+                <form id="imageOptimizerForm">
+                    <div class="form-group">
+                        <label for="image-upload">Upload Image(s)</label>
+                        <input type="file" id="image-upload" class="form-control" accept="image/*" multiple required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="image-quality">Quality (1-100)</label>
+                            <input type="range" id="image-quality" class="form-control" min="1" max="100" value="80">
+                            <span id="quality-value">80</span>%
+                        </div>
+                        <div class="form-group">
+                            <label for="image-format">Output Format</label>
+                            <select id="image-format" class="form-control">
+                                <option value="original">Keep Original</option>
+                                <option value="jpeg">JPEG</option>
+                                <option value="png">PNG</option>
+                                <option value="webp">WebP</option>
+                                <option value="avif">AVIF</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="image-width">Width (px)</label>
+                            <input type="number" id="image-width" class="form-control" placeholder="Auto">
+                        </div>
+                        <div class="form-group">
+                            <label for="image-height">Height (px)</label>
+                            <input type="number" id="image-height" class="form-control" placeholder="Auto">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="image-enhancements">Enhancements</label>
+                        <select id="image-enhancements" class="form-control" multiple>
+                            <option value="auto-contrast">Auto Contrast</option>
+                            <option value="auto-color">Auto Color</option>
+                            <option value="sharpen">Sharpen</option>
+                            <option value="denoise">Remove Noise</option>
+                            <option value="background-remove">Remove Background</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Optimize Images</button>
+                </form>
+                
+                <div class="progress-container" id="image-optimizer-progress">
+                    <div class="progress-bar" id="image-optimizer-progress-bar"></div>
+                </div>
+                
+                <div class="spinner" id="image-optimizer-spinner"></div>
+            </div>
+            
+            <!-- Results Section -->
+            <div class="results-section" id="avatar-results">
+                <h3>Generated Avatars</h3>
+                <div class="results-grid" id="avatar-results-grid">
+                    <!-- Results will be inserted here by JavaScript -->
                 </div>
             </div>
             
-            <!-- Sacred Watermark -->
-            <div class="tool-card">
-                <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Sacred Watermark" class="tool-card-img">
-                <div class="tool-card-content">
-                    <h3 class="tool-card-title"><i class="fas fa-stamp"></i> Sacred Watermark</h3>
-                    <p class="tool-card-desc">Add divine symbols, mantras or Lord Rama's image to protect your documents.</p>
-                    <a href="#" class="tool-card-btn">
-                        <i class="fas fa-arrow-right"></i> Use Tool
-                    </a>
+            <div class="results-section" id="video-results">
+                <h3>Generated Videos</h3>
+                <div class="results-grid" id="video-results-grid">
+                    <!-- Results will be inserted here by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="results-section" id="image-optimizer-results">
+                <h3>Optimized Images</h3>
+                <div class="results-grid" id="image-optimizer-results-grid">
+                    <!-- Results will be inserted here by JavaScript -->
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Image Compressor Tool -->
-    <section class="compressor-tool" id="compressor">
-        <div class="compressor-header">
-            <h2 class="compressor-title">Divine Image Compressor</h2>
-            <p class="compressor-subtitle">Optimize your images while maintaining their sacred essence. Reduce file size without losing quality.</p>
+
+    <!-- Middle Ad Banner -->
+    <div class="container">
+        <div class="ad-banner">
+            <!-- Google AdSense Ad -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+            <!-- Replace with your Ad Unit ID -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                 data-ad-slot="YOUR_AD_UNIT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
-        
-        <div class="compressor-container">
-            <div class="upload-area" id="upload-area">
-                <div class="upload-icon">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                </div>
-                <div class="upload-text">Drag & Drop your image here</div>
-                <div class="upload-subtext">or click to browse files (JPG, PNG, WEBP)</div>
-                <input type="file" id="file-input" accept="image/*">
-            </div>
-            
-            <div class="preview-container" id="preview-container">
-                <div class="preview-box">
-                    <div class="preview-title">Original Image</div>
-                    <img id="original-image" class="preview-image" src="" alt="Original Image">
-                </div>
-                <div class="preview-box">
-                    <div class="preview-title">Compressed Image</div>
-                    <img id="compressed-image" class="preview-image" src="" alt="Compressed Image">
-                </div>
-            </div>
-            
-            <div class="compression-controls" id="compression-controls">
-                <div class="control-group">
-                    <label class="control-label">Compression Quality</label>
-                    <input type="range" min="10" max="100" value="80" class="quality-slider" id="quality-slider">
-                    <div class="quality-value" id="quality-value">80%</div>
-                </div>
-                
-                <div class="control-group">
-                    <label class="control-label">Output Format</label>
-                    <div class="format-options">
-                        <div class="format-option active" data-format="original">Original</div>
-                        <div class="format-option" data-format="jpeg">JPG</div>
-                        <div class="format-option" data-format="png">PNG</div>
-                        <div class="format-option" data-format="webp">WEBP</div>
-                    </div>
-                </div>
-                
-                <div class="action-buttons">
-                    <button class="action-btn compress-btn" id="compress-btn">
-                        <i class="fas fa-compress-alt"></i> Compress Image
-                    </button>
-                    <button class="action-btn reset-btn" id="reset-btn">
-                        <i class="fas fa-redo"></i> Reset
-                    </button>
-                    <button class="action-btn download-btn" id="download-btn">
-                        <i class="fas fa-download"></i> Download
-                    </button>
-                </div>
-                
-                <div class="spinner" id="spinner"></div>
-                
-                <div class="file-info" id="file-info">
-                    <div class="file-info-item">
-                        <div class="file-info-label">Original Size</div>
-                        <div class="file-info-value" id="original-size">0 KB</div>
-                    </div>
-                    <div class="file-info-item">
-                        <div class="file-info-label">Compressed Size</div>
-                        <div class="file-info-value" id="compressed-size">0 KB</div>
-                    </div>
-                    <div class="file-info-item">
-                        <div class="file-info-label">Reduction</div>
-                        <div class="file-info-value" id="reduction">0%</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Ad Banner -->
-    <div class="ad-banner">
-        <!-- Replace with your Google AdSense code -->
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
-        <!-- Mid-Page Rectangle Ad -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-YOUR_ADSENSE_ID"
-             data-ad-slot="YOUR_AD_SLOT_ID"
-             data-ad-format="rectangle"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
     </div>
-    
-    <!-- Divine Features -->
-    <section class="divine-features" id="features">
-        <h2 class="section-title">Blessed Features</h
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>AI-Powered Generation</h3>
+                    <p>Our advanced AI algorithms create stunning, unique content based on your input.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Fast Processing</h3>
+                    <p>Generate high-quality images and videos in seconds, not hours.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Customizable Options</h3>
+                    <p>Fine-tune every aspect of your generated content to match your vision.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Cloud Storage</h3>
+                    <p>Your generated content is safely stored in the cloud for easy access.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive Design</h3>
+                    <p>Create and optimize content on any device, from desktop to mobile.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Privacy Focused</h3>
+                    <p>Your data and generated content remain private and secure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">What Our Users Say</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="quote">"The AI avatar generator saved me hundreds of dollars on custom illustrations. The results were perfect for my app's user profiles!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson">
+                        <div>
+                            <h4>Sarah
