@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Tool - Converter, Compressor & Watermark | Free Online Tool</title>
+    <meta name="description" content="Free online tool to convert, compress, and add watermarks to images. Optimize JPG, PNG, WEBP, and GIF files easily.">
+    <meta name="keywords" content="image converter, image compressor, watermark tool, JPG to PNG, PNG to WEBP, optimize images, free image tool">
+    <meta name="author" content="ImageTool Pro">
+    <meta property="og:title" content="Image Tool - Converter, Compressor & Watermark">
+    <meta property="og:description" content="Free online tool to convert, compress, and watermark images.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:image" content="https://yourwebsite.com/preview.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4a6bff;
+            --secondary: #ff6b6b;
+            --accent: #4ECDC4;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Ad Banner */
+        .ad-banner {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            text-align: center;
+            margin: 1rem auto;
+            max-width: 1200px;
+            border-radius: var(--radius);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .tool-section {
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        /* Tool Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tab {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Upload Area */
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary);
+            background-color: rgba(74, 107, 255, 0.05);
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Settings Panel */
+        .settings-panel {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        select, input[type="range"], input[type="text"], input[type="color"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-family: inherit;
+        }
+        
+        input[type="range"] {
+            padding: 0;
+        }
+        
+        /* Buttons */
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .btn:hover {
+            background-color: #3a5bef;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e05a5a;
+        }
+        
+        /* Preview Section */
+        .preview-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .image-preview {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .image-preview img {
+            max-width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .image-info {
+            margin-top: 1rem;
+        }
+        
+        /* Download Button */
+        .download-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            text-decoration: none;
+        }
+        
+        /* Sidebar Ad */
+        .sidebar-ad {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .footer-links li {
+            margin: 0 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .preview-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">ImageTool Pro</div>
+        <div class="tagline">Convert, Compress & Watermark Images for Free</div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#converter">Converter</a></li>
+                <li><a href="#compressor">Compressor</a></li>
+                <li><a href="#watermark">Watermark</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Ad Banner -->
+    <div class="ad-banner" id="top-ad">
+        <!-- AdSense Ad Unit -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID" crossorigin="anonymous"></script>
+        <!-- Top Banner Ad -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+             data-ad-slot="YOUR_AD_SLOT"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Converter Tool -->
+        <section class="tool-section" id="converter">
+            <h2 class="section-title">Image Converter</h2>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="converter">Converter</div>
+                <div class="tab" data-tab="compressor">Compressor</div>
+                <div class="tab" data-tab="watermark">Watermark</div>
+            </div>
+            
+            <div class="tab-content active" id="converter-tab">
+                <div class="upload-area" id="converter-upload">
+                    <div class="upload-icon">📁</div>
+                    <h3>Drag & Drop Your Image Here</h3>
+                    <p>or click to browse files (JPG, PNG, WEBP, GIF)</p>
+                    <input type="file" id="converter-input" accept="image/*" style="display: none;">
+                </div>
+                
+                <div class="settings-panel">
+                    <div class="form-group">
+                        <label for="output-format">Output Format</label>
+                        <select id="output-format">
+                            <option value="jpg">JPG</option>
+                            <option value="png">PNG</option>
+                            <option value="webp">WEBP</option>
+                            <option value="gif">GIF</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quality">Quality: <span id="quality-value">80</span>%</label>
+                        <input type="range" id="quality" min="10" max="100" value="80">
+                    </div>
+                    
+                    <button class="btn" id="convert-btn">Convert Image</button>
+                </div>
+                
+                <div class="preview-section" id="converter-preview" style="display: none;">
+                    <div class="image-preview">
+                        <h3>Original Image</h3>
+                        <img id="original-image" src="" alt="Original Image">
+                        <div class="image-info" id="original-info"></div>
+                    </div>
+                    
+                    <div class="image-preview">
+                        <h3>Converted Image</h3>
+                        <img id="converted-image" src="" alt="Converted Image">
+                        <div class="image-info" id="converted-info"></div>
+                        <a href="#" class="btn download-btn" id="download-converted">Download</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sidebar Ad -->
+        <div class="sidebar-ad" id="sidebar-ad">
+            <!-- AdSense Ad Unit -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID" crossorigin="anonymous"></script>
+            <!-- Sidebar Ad -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                 data-ad-slot="YOUR_SIDEBAR_AD_SLOT"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <!-- Compressor Tool (Hidden by default) -->
+        <div class="tab-content" id="compressor-tab">
+            <div class="upload-area" id="compressor-upload">
+                <div class="upload-icon">📁</div>
+                <h3>Drag & Drop Your Image Here</h3>
+                <p>or click to browse files (JPG, PNG, WEBP)</p>
+                <input type="file" id="compressor-input" accept="image/*" style="display: none;">
+            </div>
+            
+            <div class="settings-panel">
+                <div class="form-group">
+                    <label for="compression-level">Compression Level</label>
+                    <select id="compression-level">
+                        <option value="low">Low (Best Quality)</option>
+                        <option value="medium" selected>Medium (Balanced)</option>
+                        <option value="high">High (Smaller File)</option>
+                        <option value="custom">Custom</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="custom-quality-group" style="display: none;">
+                    <label for="custom-quality">Quality: <span id="custom-quality-value">70</span>%</label>
+                    <input type="range" id="custom-quality" min="10" max="100" value="70">
+                </div>
+                
+                <button class="btn" id="compress-btn">Compress Image</button>
+            </div>
+            
+            <div class="preview-section" id="compressor-preview" style="display: none;">
+                <div class="image-preview">
+                    <h3>Original Image</h3>
+                    <img id="original-compressed" src="" alt="Original Image">
+                    <div class="image-info" id="original-compressed-info"></div>
+                </div>
+                
+                <div class="image-preview">
+                    <h3>Compressed Image</h3>
+                    <img id="compressed-image" src="" alt="Compressed Image">
+                    <div class="image-info" id="compressed-info"></div>
+                    <a href="#" class="btn download-btn" id="download-compressed">Download</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Watermark Tool (Hidden by default) -->
+        <div class="tab-content" id="watermark-tab">
+            <div class="upload-area" id="watermark-upload">
+                <div class="upload-icon">📁</div>
+                <h3>Drag & Drop Your Image Here</h3>
+                <p>or click to browse files (JPG, PNG, WEBP)</p>
+                <input type="file" id="watermark-input" accept="image/*" style="display: none;">
+            </div>
+            
+            <div class="settings-panel">
+                <div class="form-group">
+                    <label>Watermark Type</label>
+                    <select id="watermark-type">
+                        <option value="text">Text Watermark</option>
+                        <option value="image">Image Watermark</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="text-watermark-group">
+                    <label for="watermark-text">Watermark Text</label>
+                    <input type="text" id="watermark-text" placeholder="Your watermark text" value="Your Brand">
+                </div>
+                
+                <div class="form-group" id="image-watermark-group" style="display: none;">
+                    <label for="watermark-image">Upload Watermark Image</label>
+                    <input type="file" id="watermark-image" accept="image/*">
+                </div>
+                
+                <div class="form-group">
+                    <label for="watermark-opacity">Opacity: <span id="opacity-value">50</span>%</label>
+                    <input type="range" id="watermark-opacity" min="10" max="100" value="50">
+                </div>
+                
+                <div class="form-group">
+                    <label for="watermark-position">Position</label>
+                    <select id="watermark-position">
+                        <option value="center">Center</option>
+                        <option value="top-left">Top Left</option>
+                        <option value="top-right">Top Right</option>
+                        <option value="bottom-left">Bottom Left</option>
+                        <option value="bottom-right">Bottom Right</option>
+                    </select>
+                </div>
+                
+                <button class="btn" id="apply-watermark-btn">Apply Watermark</button>
+            </div>
+            
+            <div class="preview-section" id="watermark-preview" style="display: none;">
+                <div class="image-preview">
+                    <h3>Original Image</h3>
+                    <img id="original-watermarked" src="" alt="Original Image">
+                </div>
+                
+                <div class="image-preview">
+                    <h3>Watermarked Image</h3>
+                    <img id="watermarked-image" src="" alt="Watermarked Image">
+                    <a href="#" class="btn download-btn" id="download-watermarked">Download</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Bottom Ad -->
+    <div class="ad-banner" id="bottom-ad">
+        <!-- AdSense Ad Unit -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID" crossorigin="anonymous"></script>
+        <!-- Bottom Banner Ad -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+             data-ad-slot="YOUR_BOTTOM_AD_SLOT"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <ul class="footer-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+        <p class="copyright">&copy; <span id="current-year"></span> ImageTool Pro. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Tab Switching
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab') + '-tab';
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Image Upload Functionality
+        const setupUpload = (uploadAreaId, inputId) => {
+            const uploadArea = document.getElementById(uploadAreaId);
+            const fileInput = document.getElementById(inputId);
+            
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = 'var(--primary)';
+                uploadArea.style.backgroundColor = 'rgba(74, 107, 255, 0.1)';
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.style.borderColor = '#ccc';
+                uploadArea.style.backgroundColor = 'transparent';
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#ccc';
+                uploadArea.style.backgroundColor = 'transparent';
+                
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    handleFileSelect(fileInput);
+                }
+            });
+            
+            fileInput.addEventListener('change', () => handleFileSelect(fileInput));
+        };
+        
+        // Initialize upload areas
+        setupUpload('converter-upload', 'converter-input');
+        setupUpload('compressor-upload', 'compressor-input');
+        setupUpload('watermark-upload', 'watermark-input');
+        
+        // Handle file selection
+        function handleFileSelect(input) {
+            const file = input.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    // Display image preview based on which tool is active
+                    const activeTab = document.querySelector('.tab.active').getAttribute('data-tab');
+                    
+                    if (activeTab === 'converter') {
+                        document.getElementById('original-image').src = e.target.result;
+                        document.getElementById('original-info').textContent = 
+                            `${file.name} | ${(file.size / 1024).toFixed(2)} KB | ${img.width}x${img.height}`;
+                        document.getElementById('converter-preview').style.display = 'flex';
+                    } else if (activeTab === 'compressor') {
+                        document.getElementById('original-compressed').src = e.target.result;
+                        document.getElementById('original-compressed-info').textContent = 
+                            `${file.name} | ${(file.size / 1024).toFixed(2)} KB | ${img.width}x${img.height}`;
+                        document.getElementById('compressor-preview').style.display = 'flex';
+                    } else if (activeTab === 'watermark') {
+                        document.getElementById('original-watermarked').src = e.target.result;
+                        document.getElementById('watermark-preview').style.display = 'flex';
+                    }
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        // Compression Level Toggle
+        document.getElementById('compression-level').addEventListener('change', function() {
+            const customGroup = document.getElementById('custom-quality-group');
+            if (this.value === 'custom') {
+                customGroup.style.display = 'block';
+            } else {
+                customGroup.style.display = 'none';
+            }
+        });
+        
+        // Watermark Type Toggle
+        document.getElementById('watermark-type').addEventListener('change', function() {
+            const textGroup = document.getElementById('text-watermark-group');
+            const imageGroup = document.getElementById('image-watermark-group');
+            
+            if (this.value === 'text') {
+                textGroup.style.display = 'block';
+                imageGroup.style.display = 'none';
+            } else {
+                textGroup.style.display = 'none';
+                imageGroup.style.display = 'block';
+            }
+        });
+        
+        // Range Value Displays
+        document.getElementById('quality').addEventListener('input', function() {
+            document.getElementById('quality-value').textContent = this.value;
+        });
+        
+        document.getElementById('custom-quality').addEventListener('input', function() {
+            document.getElementById('custom-quality-value').textContent = this.value;
+        });
+        
+        document.getElementById('watermark-opacity').addEventListener('input', function() {
+            document.getElementById('opacity-value').textContent = this.value;
+        });
+        
+        // Convert Button (Demo - in a real app, you'd use Canvas API or a library like Compressor.js)
+        document.getElementById('convert-btn').addEventListener('click', function() {
+            alert("In a real implementation, this would convert the image using the selected format and quality.");
+            // Example: You would use Canvas to convert the image
+            // const canvas = document.createElement('canvas');
+            // const ctx = canvas.getContext('2d');
+            // ... conversion logic
+        });
+        
+        // Compress Button (Demo)
+        document.getElementById('compress-btn').addEventListener('click', function() {
+            alert("In a real implementation, this would compress the image based on selected settings.");
+        });
+        
+        // Watermark Button (Demo)
+        document.getElementById('apply-watermark-btn').addEventListener('click', function() {
+            alert("In a real implementation, this would apply the watermark to the image.");
+        });
+        
+        // Download Buttons (Demo)
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert("In a real implementation, this would download the processed image.");
+            });
+        });
+    </script>
+</body>
+</html>
