@@ -1,169 +1,808 @@
-        // Handle file selection
-        function handleFileSelect(input) {
-            const file = input.files[0];
-            if (!file) return;
-            
-            if (!file.type.match('image.*')) {
-                alert('Please select an image file (JPG, PNG, WEBP, GIF)');
-                return;
-            }
-            
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.onload = function() {
-                    // Depending on which tool is active, show the appropriate preview
-                    const activeTab = document.querySelector('.tab.active').getAttribute('data-tab');
-                    
-                    if (activeTab === 'converter') {
-                        document.getElementById('original-image').src = e.target.result;
-                        document.getElementById('converter-preview').style.display = 'flex';
-                        
-                        // Display image info
-                        document.getElementById('original-info').innerHTML = `
-                            <strong>Name:</strong> ${file.name}<br>
-                            <strong>Type:</strong> ${file.type}<br>
-                            <strong>Size:</strong> ${(file.size / 1024).toFixed(2)} KB<br>
-                            <strong>Dimensions:</strong> ${img.width} × ${img.height} px
-                        `;
-                    } 
-                    else if (activeTab === 'compressor') {
-                        document.getElementById('original-compressed').src = e.target.result;
-                        document.getElementById('compressor-preview').style.display = 'flex';
-                        
-                        // Display image info
-                        document.getElementById('original-compressed-info').innerHTML = `
-                            <strong>Name:</strong> ${file.name}<br>
-                            <strong>Type:</strong> ${file.type}<br>
-                            <strong>Size:</strong> ${(file.size / 1024).toFixed(2)} KB<br>
-                            <strong>Dimensions:</strong> ${img.width} × ${img.height} px
-                        `;
-                    }
-                    else if (activeTab === 'watermark') {
-                        document.getElementById('original-watermarked').src = e.target.result;
-                        document.getElementById('watermark-preview').style.display = 'flex';
-                    }
-                };
-                img.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RamDoc Tools - Divine Document & Image Editor</title>
+    <meta name="description" content="Free divine document tools to convert, edit, compress PDFs, JPGs with Lord Ram's blessings. Sacred watermarking and optimization tools">
+    <meta name="keywords" content="PDF tools, image converter, ram document tools, sacred editor, JPG to PDF, free document tools">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Hind+Siliguri:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --green: #138808;
+            --blue: #000080;
+            --gold: #FFD700;
+            --red: #E21717;
+            --light-bg: #FFF9E6;
+            --dark-text: #333333;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --transition: all 0.3s ease;
         }
-
-        // Quality slider value display
-        document.getElementById('quality').addEventListener('input', function() {
-            document.getElementById('quality-value').textContent = this.value;
-        });
-
-        document.getElementById('custom-quality').addEventListener('input', function() {
-            document.getElementById('custom-quality-value').textContent = this.value;
-        });
-
-        // Compression level selection
-        document.getElementById('compression-level').addEventListener('change', function() {
-            const customGroup = document.getElementById('custom-quality-group');
-            customGroup.style.display = this.value === 'custom' ? 'block' : 'none';
-        });
-
-        // Watermark type selection
-        document.getElementById('watermark-type').addEventListener('change', function() {
-            const textGroup = document.getElementById('text-watermark-group');
-            const imageGroup = document.getElementById('image-watermark-group');
-            
-            if (this.value === 'text') {
-                textGroup.style.display = 'block';
-                imageGroup.style.display = 'none';
-            } else {
-                textGroup.style.display = 'none';
-                imageGroup.style.display = 'block';
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-image: url('https://i.imgur.com/JQJbZLQ.png');
+            background-size: 300px;
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--saffron) 0%, var(--gold) 100%);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border-bottom: 5px solid var(--blue);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .ram-icon {
+            font-size: 2.5rem;
+            color: var(--blue);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .logo {
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--blue), var(--red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: var(--blue);
+            font-weight: 500;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-btn {
+            display: inline-flex;
+            background: linear-gradient(to right, var(--saffron), var(--gold));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Tools Grid */
+        .tools-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--blue);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--saffron), var(--blue));
+            border-radius: 2px;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--saffron);
+            position: relative;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tool-card-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .tool-card-content {
+            padding: 1.5rem;
+        }
+        
+        .tool-card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tool-card-desc {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tool-card-btn {
+            display: inline-flex;
+            background: linear-gradient(to right, var(--blue), #3a5bef);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .tool-card-btn:hover {
+            background: linear-gradient(to right, #3a5bef, var(--blue));
+        }
+        
+        /* Divine Features */
+        .divine-features {
+            background: linear-gradient(135deg, rgba(255, 153, 51, 0.1) 0%, rgba(19, 136, 8, 0.1) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--blue);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--blue);
+        }
+        
+        .feature-desc {
+            color: #666;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 1rem;
+            position: relative;
+            border-left: 5px solid var(--saffron);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -1.5rem;
+            left: -1rem;
+            color: rgba(255, 153, 51, 0.2);
+            font-family: serif;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--saffron);
+        }
+        
+        .author-info h4 {
+            color: var(--blue);
+        }
+        
+        .author-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, var(--blue) 0%, #1a1a2e 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: url('https://i.imgur.com/JQJbZLQ.png') repeat-x;
+            background-size: contain;
+            opacity: 0.3;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-btn {
+            display: inline-flex;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cta-btn-primary {
+            background: linear-gradient(to right, var(--saffron), var(--gold));
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .cta-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .cta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background: #111;
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            margin: 1.5rem 0;
+            gap: 1.5rem;
+        }
+        
+        .footer-links li {
+            position: relative;
+        }
+        
+        .footer-links li:not(:last-child)::after {
+            content: '•';
+            position: absolute;
+            right: -0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
             }
-        });
-
-        // Watermark opacity slider
-        document.getElementById('watermark-opacity').addEventListener('input', function() {
-            document.getElementById('opacity-value').textContent = this.value;
-        });
-
-        // Convert button click handler (simulated)
-        document.getElementById('convert-btn').addEventListener('click', function() {
-            const originalImg = document.getElementById('original-image');
-            if (!originalImg.src) {
-                alert('Please upload an image first');
-                return;
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
             }
             
-            // Simulate conversion (in a real app, this would use canvas API)
-            document.getElementById('converted-image').src = originalImg.src;
+            .section-title {
+                font-size: 2rem;
+            }
             
-            // Simulate file info changes
-            const originalSize = document.querySelector('#original-info strong:nth-child(3)').nextSibling.textContent.trim();
-            const newSize = (parseFloat(originalSize) * (document.getElementById('quality').value / 100)).toFixed(2);
+            .cta-title {
+                font-size: 2rem;
+            }
             
-            document.getElementById('converted-info').innerHTML = `
-                <strong>Format:</strong> ${document.getElementById('output-format').value.toUpperCase()}<br>
-                <strong>Quality:</strong> ${document.getElementById('quality').value}%<br>
-                <strong>Size:</strong> ${newSize} KB<br>
-                <strong>Dimensions:</strong> ${originalImg.naturalWidth} × ${originalImg.naturalHeight} px
-            `;
+            .cta-subtitle {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                height: 400px;
+            }
             
-            // Simulate download button
-            document.getElementById('download-converted').addEventListener('click', function(e) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .tool-card-title {
+                font-size: 1.3rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <div class="ram-icon">🕉️</div>
+            <div>
+                <h1 class="logo">RamDoc Tools</h1>
+                <p class="tagline">Bless your documents with divine energy</p>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="https://i.imgur.com/ram-image.jpg" alt="Lord Rama" class="hero-bg">
+        <div class="hero-content">
+            <h1 class="hero-title">Divine Document Tools</h1>
+            <p class="hero-subtitle">Convert, edit and optimize your documents with the blessings of Lord Rama</p>
+            <a href="#tools" class="hero-btn">
+                <i class="fas fa-hands-praying"></i> Explore Tools
+            </a>
+        </div>
+    </section>
+    
+    <!-- Tools Section -->
+    <section class="tools-section" id="tools">
+        <h2 class="section-title">Our Sacred Tools</h2>
+        
+        <div class="tools-grid">
+            <!-- PDF Tools -->
+            <div class="tool-card">
+                <img src="https://i.imgur.com/pdf-tool.jpg" alt="PDF Tools" class="tool-card-img">
+                <div class="tool-card-content">
+                    <h3 class="tool-card-title"><i class="fas fa-file-pdf"></i> PDF Tools</h3>
+                    <p class="tool-card-desc">Merge, split, compress and convert PDFs with divine precision. Blessed tools for all your document needs.</p>
+                    <a href="#" class="tool-card-btn">
+                        <i class="fas fa-arrow-right"></i> Use Tool
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Image Converter -->
+            <div class="tool-card">
+                <img src="https://i.imgur.com/image-converter.jpg" alt="Image Converter" class="tool-card-img">
+                <div class="tool-card-content">
+                    <h3 class="tool-card-title"><i class="fas fa-exchange-alt"></i> Image Converter</h3>
+                    <p class="tool-card-desc">Convert between JPG, PNG, WEBP and more while maintaining spiritual quality and purity.</p>
+                    <a href="#" class="tool-card-btn">
+                        <i class="fas fa-arrow-right"></i> Use Tool
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sacred Watermark -->
+            <div class="tool-card">
+                <img src="https://i.imgur.com/watermark-tool.jpg" alt="Sacred Watermark" class="tool-card-img">
+                <div class="tool-card-content">
+                    <h3 class="tool-card-title"><i class="fas fa-stamp"></i> Sacred Watermark</h3>
+                    <p class="tool-card-desc">Add divine symbols, mantras or Lord Rama's image to protect your documents.</p>
+                    <a href="#" class="tool-card-btn">
+                        <i class="fas fa-arrow-right"></i> Use Tool
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Document Compressor -->
+            <div class="tool-card">
+                <img src="https://i.imgur.com/compressor-tool.jpg" alt="Document Compressor" class="tool-card-img">
+                <div class="tool-card-content">
+                    <h3 class="tool-card-title"><i class="fas fa-compress-alt"></i> Document Compressor</h3>
+                    <p class="tool-card-desc">Reduce file size without losing quality - blessed compression algorithms.</p>
+                    <a href="#" class="tool-card-btn">
+                        <i class="fas fa-arrow-right"></i> Use Tool
+                    </a>
+                </div>
+            </div>
+            
+            <!-- OCR Tool -->
+            <div class="tool-card">
+                <img src="https://i.imgur.com/ocr-tool.jpg" alt="OCR Tool" class="tool-card-img">
+                <div class="tool-card-content">
+                    <h3 class="tool-card-title"><i class="fas fa-eye"></i> Divine OCR</h3>
+                    <p class="tool-card-desc">Extract text from images and scanned documents with sacred accuracy.</p>
+                    <a href="#" class="tool-card-btn">
+                        <i class="fas fa-arrow-right"></i> Use Tool
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Batch Processor -->
+            <div class="tool-card">
+                <img src="https://i.imgur.com/batch-tool.jpg" alt="Batch Processor" class="tool-card-img">
+                <div class="tool-card-content">
+                    <h3 class="tool-card-title"><i class="fas fa-tasks"></i> Batch Processor</h3>
+                    <p class="tool-card-desc">Process multiple files at once with the power of divine automation.</p>
+                    <a href="#" class="tool-card-btn">
+                        <i class="fas fa-arrow-right"></i> Use Tool
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Divine Features -->
+    <section class="divine-features">
+        <h2 class="section-title">Blessed Features</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🕉️</div>
+                <h3 class="feature-title">Sacred Algorithms</h3>
+                <p class="feature-desc">Our tools are blessed with Vedic mantras for optimal performance</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🙏</div>
+                <h3 class="feature-title">Ad-Free Experience</h3>
+                <p class="feature-desc">Clean, distraction-free tools for focused work</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3 class="feature-title">Divine Privacy</h3>
+                <p class="feature-desc">Your files are processed securely and never stored</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💻</div>
+                <h3 class="feature-title">Universal Access</h3>
+                <p class="feature-desc">Works on all devices - desktop, tablet and mobile</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">Devotee Experiences</h2>
+        
+        <div class="features-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">These tools have transformed my workflow. Now I can prepare all my temple documents with Lord Rama's blessings embedded right in the files.</p>
+                <div class="testimonial-author">
+                    <img src="https://i.imgur.com/user1.jpg" alt="Priest Sharma" class="author-avatar">
+                    <div class="author-info">
+                        <h4>Priest Sharma</h4>
+                        <p>Varanasi Temple</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">As a spiritual content creator, the sacred watermark tool helps me protect my work while spreading divine messages.</p>
+                <div class="testimonial-author">
+                    <img src="https://i.imgur.com/user2.jpg" alt="Devi Priya" class="author-avatar">
+                    <div class="author-info">
+                        <h4>Devi Priya</h4>
+                        <p>Spiritual Blogger</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">The PDF merger saved me hours of work preparing scriptures for our ashram's newsletter. Jai Shri Ram!</p>
+                <div class="testimonial-author">
+                    <img src="https://i.imgur.com/user3.jpg" alt="Swami Ji" class="author-avatar">
+                    <div class="author-info">
+                        <h4>Swami Ji</h4>
+                        <p>Rama Ashram</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <img src="https://i.imgur.com/ram-bg.jpg" alt="Lord Rama" class="cta-bg">
+        <h2 class="cta-title">Ready to Experience Divine Document Tools?</h2>
+        <p class="cta-subtitle">Join thousands of devotees who use RamDoc Tools for their spiritual and professional work</p>
+        <div class="cta-buttons">
+            <a href="#" class="cta-btn cta-btn-primary">
+                <i class="fas fa-hands-praying"></i> Start Blessing Files
+            </a>
+            <a href="#" class="cta-btn cta-btn-secondary">
+                <i class="fas fa-video"></i> Watch Tutorial
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">RamDoc Tools</div>
+        <p style="opacity: 0.9; max-width: 600px; margin: 0 auto 1.5rem;">
+            Free divine tools for your spiritual document needs. Blessed by the energy of Lord Rama.
+        </p>
+        
+        <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Tools</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        
+        <p class="copyright">
+            &copy; <span id="current-year"></span> RamDoc Tools. All rights reserved.<br>
+            जय श्री राम
+        </p>
+    </footer>
+    
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                alert('In a real application, this would download the converted image');
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
-
-        // Compress button click handler (simulated)
-        document.getElementById('compress-btn').addEventListener('click', function() {
-            const originalImg = document.getElementById('original-compressed');
-            if (!originalImg.src) {
-                alert('Please upload an image first');
-                return;
-            }
-            
-            // Simulate compression (in a real app, this would use canvas API)
-            document.getElementById('compressed-image').src = originalImg.src;
-            
-            // Calculate simulated compressed size based on compression level
-            const originalSize = parseFloat(document.querySelector('#original-compressed-info strong:nth-child(3)').nextSibling.textContent.trim());
-            let compressionRatio = 0.7; // default for medium
-            
-            const compressionLevel = document.getElementById('compression-level').value;
-            if (compressionLevel === 'low') compressionRatio = 0.9;
-            else if (compressionLevel === 'high') compressionRatio = 0.5;
-            else if (compressionLevel === 'custom') compressionRatio = document.getElementById('custom-quality').value / 100;
-            
-            const newSize = (originalSize * compressionRatio).toFixed(2);
-            
-            document.getElementById('compressed-info').innerHTML = `
-                <strong>Compression:</strong> ${compressionLevel}<br>
-                <strong>Size:</strong> ${newSize} KB (${((1 - compressionRatio) * 100).toFixed(0)}% reduction)<br>
-                <strong>Dimensions:</strong> ${originalImg.naturalWidth} × ${originalImg.naturalHeight} px
-            `;
-            
-            // Simulate download button
-            document.getElementById('download-compressed').addEventListener('click', function(e) {
-                e.preventDefault();
-                alert('In a real application, this would download the compressed image');
-            });
-        });
-
-        // Watermark button click handler (simulated)
-        document.getElementById('apply-watermark-btn').addEventListener('click', function() {
-            const originalImg = document.getElementById('original-watermarked');
-            if (!originalImg.src) {
-                alert('Please upload an image first');
-                return;
-            }
-            
-            // Simulate watermarking (in a real app, this would use canvas API)
-            document.getElementById('watermarked-image').src = originalImg.src;
-            
-            // Simulate download button
-            document.getElementById('download-watermarked').addEventListener('click', function(e) {
-                e.preventDefault();
-                alert('In a real application, this would download the watermarked image');
-            });
-        });
+        
+        // Animation on scroll would go here in a real implementation
     </script>
 </body>
 </html>
