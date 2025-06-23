@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDFToolsIndia - Free Online PDF Tools with Indian Pride</title>
+    <meta name="description" content="Free online PDF tools for merging, splitting, compressing, converting and more. 100% free and secure with Indian tricolor theme.">
+    <meta name="keywords" content="PDF tools, merge PDF, split PDF, compress PDF, Indian flag theme, free PDF converter">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --white: #FFFFFF;
+            --green: #138808;
+            --navy-blue: #000080;
+            --light-gray: #f5f5f5;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light-gray);
+        }
+        
+        .header {
+            background: linear-gradient(to right, var(--saffron), var(--saffron));
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background-color: var(--saffron);
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 20%;
+            background-color: var(--green);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            background-color: var(--white);
+            margin: 0 15%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--navy-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .logo-icon i {
+            color: white;
+            font-size: 24px;
+        }
+        
+        .logo-text h1 {
+            color: var(--navy-blue);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .chakra {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--navy-blue);
+            border-radius: 50%;
+            margin: 10px auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chakra::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--navy-blue);
+            border-radius: 50%;
+        }
+        
+        .chakra .spoke {
+            position: absolute;
+            width: 2px;
+            height: 30px;
+            background-color: var(--navy-blue);
+            transform-origin: bottom center;
+        }
+        
+        .chakra .spoke:nth-child(1) { transform: rotate(0deg); }
+        .chakra .spoke:nth-child(2) { transform: rotate(15deg); }
+        .chakra .spoke:nth-child(3) { transform: rotate(30deg); }
+        /* Add more spokes as needed */
+        
+        .main-content {
+            padding: 40px 0;
+            background-color: var(--white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--navy-blue);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--saffron), var(--green));
+            margin: 10px auto 0;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .tool-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--saffron);
+            position: relative;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tool-card.green {
+            border-top-color: var(--green);
+        }
+        
+        .tool-card.blue {
+            border-top-color: var(--navy-blue);
+        }
+        
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            margin: 20px auto 15px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--navy-blue);
+        }
+        
+        .tool-card h3 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: var(--navy-blue);
+        }
+        
+        .tool-card p {
+            text-align: center;
+            color: #666;
+            padding: 0 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .tool-btn {
+            display: block;
+            width: 80%;
+            margin: 0 auto 20px;
+            padding: 10px;
+            background-color: var(--navy-blue);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .tool-btn:hover {
+            background-color: var(--saffron);
+        }
+        
+        .ad-container {
+            margin: 30px auto;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            text-align: center;
+            border-radius: 5px;
+            max-width: 1200px;
+        }
+        
+        .ad-label {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        
+        .footer {
+            background: linear-gradient(to right, var(--green), var(--green));
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--saffron);
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--saffron);
+        }
+        
+        .copyright {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Tool Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #333;
+        }
+        
+        .upload-area {
+            border: 2px dashed #ccc;
+            padding: 40px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--navy-blue);
+        }
+        
+        .upload-area i {
+            font-size: 48px;
+            color: var(--navy-blue);
+            margin-bottom: 15px;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .process-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--green);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        
+        .process-btn:hover {
+            background-color: var(--saffron);
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--navy-blue);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .download-btn:hover {
+            background-color: var(--saffron);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                margin: 0 5%;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-content {
+                padding: 15px;
+            }
+            
+            .logo {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>PDFToolsIndia</h1>
+                    <p>Your free online PDF solution with Indian pride</p>
+                </div>
+            </div>
+            <div class="chakra">
+                <div class="spoke"></div>
+                <div class="spoke"></div>
+                <div class="spoke"></div>
+                <!-- Add more spokes as needed -->
+            </div>
+        </div>
+    </header>
+    
+    <div class="ad-container">
+        <div class="ad-label">Advertisement</div>
+        <!-- Google AdSense Header Ad -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+        <!-- Responsive Ad -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+             data-ad-slot="HEADER_AD_SLOT"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    <main class="main-content">
+        <div class="container">
+            <h2 class="section-title">Popular PDF Tools</h2>
+            
+            <div class="tools-grid">
+                <!-- PDF Tools -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-object-group"></i>
+                    </div>
+                    <h3>Merge PDF</h3>
+                    <p>Combine multiple PDF files into one single document in seconds</p>
+                    <button class="tool-btn" onclick="openToolModal('merge')">Use Tool</button>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Split PDF</h3>
+                    <p>Extract specific pages or split by ranges from your PDF</p>
+                    <button class="tool-btn" onclick="openToolModal('split')">Use Tool</button>
+                </div>
+                
+                <div class="tool-card green">
+                    <div class="tool-icon">
+                        <i class="fas fa-compress-alt"></i>
+                    </div>
+                    <h3>Compress PDF</h3>
+                    <p>Reduce PDF file size while keeping quality</p>
+                    <button class="tool-btn" onclick="openToolModal('compress')">Use Tool</button>
+                </div>
+                
+                <!-- Image Tools -->
+                <div class="tool-card blue">
+                    <div class="tool-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>PDF to Image</h3>
+                    <p>Convert PDF pages to JPG, PNG or other image formats</p>
+                    <button class="tool-btn" onclick="openToolModal('pdf-to-image')">Use Tool</button>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Image to PDF</h3>
+                    <p>Convert JPG, PNG or other images to PDF documents</p>
+                    <button class="tool-btn" onclick="openToolModal('image-to-pdf')">Use Tool</button>
+                </div>
+                
+                <!-- Other Tools -->
+                <div class="tool-card green">
+                    <div class="tool-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Protect PDF</h3>
+                    <p>Add password protection to your PDF files</p>
+                    <button class="tool-btn" onclick="openToolModal('protect')">Use Tool</button>
+                </div>
+                
+                <div class="tool-card blue">
+                    <div class="tool-icon">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+                    <h3>Unlock PDF</h3>
+                    <p>Remove password protection from PDF files</p>
+                    <button class="tool-btn" onclick="openToolModal('unlock')">Use Tool</button>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3>Sign PDF</h3>
+                    <p>Add your digital signature to PDF documents</p>
+                    <button class="tool-btn" onclick="openToolModal('sign')">Use Tool</button>
+                </div>
+                
+                <div class="tool-card green">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <h3>PDF to Word</h3>
+                    <p>Convert PDF files to editable Word documents</p>
+                    <button class="tool-btn" onclick="openToolModal('pdf-to-word')">Use Tool</button>
+                </div>
+                
+                <div class="tool-card blue">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h3>PDF to Excel</h3>
+                    <p>Extract tables from PDF to Excel spreadsheets</p>
+                    <button class="tool-btn" onclick="openToolModal('pdf-to-excel')">Use Tool</button>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-powerpoint"></i>
+                    </div>
+                    <h3>PDF to PPT</h3>
+                    <p>Convert PDF files to PowerPoint presentations</p>
+                    <button class="tool-btn" onclick="openToolModal('pdf-to-ppt')">Use Tool</button>
+                </div>
+                
+                <div class="tool-card green">
+                    <div class="tool-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h3>Text to Image</h3>
+                    <p>Convert text to beautiful images with custom styles</p>
+                    <button class="tool-btn" onclick="openToolModal('text-to-image')">Use Tool</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Google AdSense Middle Ad -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+            <!-- Responsive Ad -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="MIDDLE_AD_SLOT"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <div class="container">
+            <h2 class="section-title">Why Choose PDFToolsIndia?</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p>PDFToolsIndia offers a complete suite of free PDF tools with the pride of Indian tricolor theme. 
+                Our platform is 100% secure, processes files in your browser, and doesn't store your documents on our servers. 
+                Enjoy fast, reliable PDF processing with an intuitive interface that celebrates Indian heritage.</p>
+            </div>
+        </div>
+    </main>
+    
+    <div class="ad-container">
+        <div class="ad-label">Advertisement</div>
+        <!-- Google AdSense Footer Ad -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+        <!-- Responsive Ad -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+             data-ad-slot="FOOTER_AD_SLOT"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/tools">All Tools</a>
+                <a href="/about">About Us</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/contact">Contact</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 PDFToolsIndia. All rights reserved. Made with ❤️ in India
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Tool Modals -->
+    <div id="merge-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('merge-modal')">&times;</span>
+            <h2>Merge PDF Files</h2>
+            <p>Combine multiple PDF files into one document. Drag and drop your files below.</p>
+            
+            <div class="upload-area" id="merge-upload-area" onclick="document.getElementById('merge-files').click()">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h3>Click to upload PDF files</h3>
+                <p>or drag and drop files here</p>
+                <input type="file" id="merge-files" class="file-input" accept=".pdf" multiple>
+            </div>
+            
+            <div id="merge-file-list" style="margin: 20px 0;"></div>
+            
+            <button class="process-btn" id="merge-btn" onclick="mergePDFs()">Merge PDFs</button>
+            
+            <a href="#" class="download-btn" id="merge-download" style="display: none;">Download Merged PDF</a>
+        </div>
+    </div>
+    
+    <!-- Similar modals for other tools -->
+    <div id="split-modal" class="modal">
+        <!-- Split PDF modal content -->
+    </div>
+    
+    <div id="compress-modal" class="modal">
+        <!-- Compress PDF modal content -->
+    </div>
+    
+    <!-- Include PDF-lib and other necessary libraries -->
+    <script src="https://unpkg.com/pdf-lib@1.16.0/dist/pdf-lib.min.js"></script>
+    <script src="https://unpkg.com/downloadjs@1.4.7"></script>
+    
+    <script>
+        // Global variables
+        let currentTool = '';
+        let uploadedFiles = [];
+        
+        // Modal functions
+        function openToolModal(tool) {
+            currentTool = tool;
+            document.getElementById(tool + '-modal').style.display = 'block';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
+        
+        // File upload handling
+        document.getElementById('merge-files').addEventListener('change', function(e) {
+            handleFileUpload(e.target.files, 'merge');
+        });
+        
+        function handleFileUpload(files, tool) {
+            uploadedFiles = Array.from(files);
+            const fileList = document.getElementById(tool + '-file-list');
+            fileList.innerHTML = '';
+            
+            if (uploadedFiles.length === 0) {
+                fileList.innerHTML = '<p>No files selected</p>';
+                return;
+            }
+            
+            fileList.innerHTML = '<h4>Selected Files:</h4>';
+            uploadedFiles.forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.style.display = 'flex';
+                fileItem.style.alignItems = 'center';
+                fileItem.style.margin = '5px 0';
+                fileItem.style.padding = '5px';
+                fileItem.style.backgroundColor = '#f5f5f5';
+                fileItem.style.borderRadius = '5px';
+                
+                fileItem.innerHTML = `
+                    <span style="margin-right: 10px;">${index + 1}.</span>
+                    <span style="flex-grow: 1;">${file.name} (${formatFileSize(file.size)})</span>
+                    <button onclick="removeFile(${index}, '${tool}')" style="background: none; border: none; color: #ff4444; cursor: pointer;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                
+                fileList.appendChild(fileItem);
+            });
+        }
+        
+        function removeFile(index, tool) {
+            uploadedFiles.splice(index, 1);
+            handleFileUpload(uploadedFiles, tool);
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // PDF Processing Functions
+        async function mergePDFs() {
+            const mergeBtn = document.getElementById('merge-btn');
+            const downloadBtn = document.getElementById('merge-download');
+            
+            if (uploadedFiles.length < 2) {
+                alert('Please select at least 2 PDF files to merge');
+                return;
+            }
+            
+            mergeBtn.disabled = true;
+            mergeBtn.textContent = 'Merging...';
+            
+            try {
+                const { PDFDocument } = PDFLib;
+                const mergedPdf = await PDFDocument.create();
+                
+                for (const file of uploadedFiles) {
+                    const pdfBytes = await file.arrayBuffer();
+                    const pdfDoc = await PDFDocument.load(pdfBytes);
+                    const pages = await mergedPdf.copyPages(pdfDoc, pdfDoc.getPageIndices());
+                    pages.forEach(page => mergedPdf.addPage(page));
+                }
+                
+                const mergedPdfBytes = await mergedPdf.save();
+                const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
+                const url = URL.createObjectURL(blob);
+                
+                downloadBtn.href = url;
+                downloadBtn.download = 'merged.pdf';
+                downloadBtn.style.display = 'block';
+                
+                mergeBtn.textContent = 'Merge Successful!';
+                setTimeout(() => {
+                    mergeBtn.textContent = 'Merge PDFs';
+                    mergeBtn.disabled = false;
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Error merging PDFs:', error);
+                alert('Error merging PDFs. Please try again.');
+                mergeBtn.textContent = 'Merge PDFs';
+                mergeBtn.disabled = false;
+            }
+        }
+        
+        // Similar functions for other tools (split, compress, etc.)
+        
+        // Initialize AdSense
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>
