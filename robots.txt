@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /uploads/
+Disallow: /results/
+
+Sitemap: https://yourdomain.com/sitemap.xml
